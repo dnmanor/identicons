@@ -31,7 +31,7 @@ defmodule IDENTICON do
   end
 
   def create do
-    id = IO.gets("\n Please input user ID \n") |> String.trim()
+    id = IO.gets("\n Please input 9-digit user ID \n") |> String.trim()
 
     case String.length(id) === 9 do
       true ->
@@ -39,7 +39,8 @@ defmodule IDENTICON do
         create_svg(grid_data, id)
 
       false ->
-        {:error, "invalid ID"}
+        IO.puts("invalid ID")
+        create()
     end
   end
 end
